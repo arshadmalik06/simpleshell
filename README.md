@@ -42,7 +42,7 @@ The file is split into stages. Each stage maps to the reference that explains th
 
 The code is written from scratch; the tutorials explain the ideas. Brennan's page itself asks students not to copy his code, so keep the references in your report and describe the design in your own words.
 
-## The key ideas (good for your viva)
+## Theory
 
 1. **A shell is just a loop**: read, parse, execute.
 2. **fork() + exec()**: `fork` clones the shell; the clone calls `execvp` to turn itself into the requested program. The shell survives because only the clone was replaced.
@@ -53,7 +53,7 @@ The code is written from scratch; the tutorials explain the ideas. Brennan's pag
 7. **Signals**: Ctrl-C goes to the shell and the child. The shell ignores its effect (just prints a newline); the child gets the default action (die).
 8. **Zombies**: a finished child stays in the process table until its parent waits. `reap_background()` uses `waitpid(..., WNOHANG)` to clean up finished background jobs.
 
-## Suggested way to study it later
+## Matching references
 
 Read `mysh.c` in this order: `main()` (stage 1) -> `tokenize()` and `parse()` (stage 2) -> `execute()` (stage 3) -> `run_child()` (stages 3, 5) -> builtins (stage 4). Then open the matching reference section from the table above.
 
